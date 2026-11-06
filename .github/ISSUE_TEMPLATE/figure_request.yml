@@ -1,0 +1,58 @@
+name: 图形或功能请求
+description: 请求新的示例图形、工具包中的新部件或辅助函数、新的检查项，或对 skill 工作方式的修改。
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        How It Works 把一个想法表达为一台真实的机器、仪器、工具或家具。它不是图表库，也不绘制人物或精确地图。
+  - type: dropdown
+    id: request
+    attributes:
+      label: 你想请求什么？
+      options:
+        - 一个新的示例图形
+        - 工具包中的新部件或辅助函数
+        - 新的检查项或脚本
+        - 对 skill 说明的修改
+        - 其他
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: 想法
+      description: 如果是图形请求，请给出它要解释的想法及其真实数值（尺寸、数量、速率、阈值），或你设想的对象以及哪些部分应该动起来。其他请求请描述改动内容。
+      placeholder: 一个 10 连接的连接池；请求借用一个连接并归还，10 个全部占用时在队列中等待。
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: 图形类型
+      options:
+        - SVG
+        - SVG + WebGL
+        - 3D（beta）
+        - 不确定
+        - 与图形无关
+  - type: textarea
+    id: why
+    attributes:
+      label: 为什么值得加入
+      description: 它能讲清什么，或者没有它你做不了什么。
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: 你尝试过的替代方案
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: 提交之前
+      options:
+        - label: 我已搜索过现有 issue。
+          required: true
+        - label: 我已阅读 README 的 Limits 一节。
+          required: true

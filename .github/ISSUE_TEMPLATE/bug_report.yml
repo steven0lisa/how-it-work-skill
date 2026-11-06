@@ -1,0 +1,104 @@
+name: Bug 报告
+description: 图形、工具包、检查脚本或安装过程出了错。
+title: "Bug: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢反馈。截图最有帮助；如果是绘制缺陷，请附 4× 特写（`node scripts/capture.mjs page.html --zoom x,y,w,h`）。
+  - type: dropdown
+    id: area
+    attributes:
+      label: 问题出在哪里？
+      options:
+        - 用该 skill 生成的图形
+        - 某个示例
+        - 工具包（kit/）
+        - 某个检查脚本（scripts/）
+        - SKILL.md 或参考文档
+        - 安装 skill
+    validations:
+      required: true
+  - type: dropdown
+    id: agent
+    attributes:
+      label: 哪个 agent？
+      options:
+        - Claude Code
+        - Antigravity
+        - OpenCode
+        - Codex
+        - MiniMax Code
+        - 其他
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: 图形类型
+      options:
+        - SVG
+        - SVG + WebGL
+        - 3D（beta）
+        - 与图形无关
+  - type: dropdown
+    id: target
+    attributes:
+      label: 图形的承载形式？
+      options:
+        - 独立 HTML
+        - 单独的 SVG 文件
+        - React / Next.js
+        - 与图形无关
+  - type: dropdown
+    id: theme
+    attributes:
+      label: 主题
+      options:
+        - 浅色
+        - 深色
+        - 两者
+        - 与图形无关
+  - type: textarea
+    id: what
+    attributes:
+      label: 发生了什么
+      description: 你看到的现象，以及它在图形或输出中的位置。
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 你期望的结果
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 如何复现
+      description: 你给 agent 的提示词，或你运行的确切命令。
+      placeholder: |
+        /how-it-work 解释令牌桶限流器的工作原理，交互式
+        node examples/raptor-engine/build.mjs --audit
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: 输出
+      description: 任何报错、审计行或控制台消息。
+      render: shell
+  - type: input
+    id: environment
+    attributes:
+      label: 环境
+      description: Node.js 版本、操作系统、Chrome 版本、agent 版本。
+      placeholder: "`node --version` 与 `claude --version`、`agy --version`、`opencode --version`、`codex --version` 或 `mcode --version` 的输出，你的操作系统，你的 Chrome 版本"
+    validations:
+      required: true
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: 截图
+      description: 把图片拖到这里。绘制缺陷请附 4× 特写。
